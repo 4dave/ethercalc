@@ -1,0 +1,70 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'i',
+1 verbose cli   '-g',
+1 verbose cli   'ethercalc' ]
+2 info using npm@2.15.8
+3 info using node@v4.4.7
+4 verbose install initial load of /usr/local/lib/package.json
+5 verbose readDependencies loading dependencies from /usr/local/lib/package.json
+6 silly cache add args [ 'ethercalc', null ]
+7 verbose cache add spec ethercalc
+8 silly cache add parsed spec Result {
+8 silly cache add   raw: 'ethercalc',
+8 silly cache add   scope: null,
+8 silly cache add   name: 'ethercalc',
+8 silly cache add   rawSpec: '',
+8 silly cache add   spec: 'latest',
+8 silly cache add   type: 'tag' }
+9 silly addNamed ethercalc@latest
+10 verbose addNamed "latest" is being treated as a dist-tag for ethercalc
+11 info addNameTag [ 'ethercalc', 'latest' ]
+12 silly mapToRegistry name ethercalc
+13 silly mapToRegistry using default registry
+14 silly mapToRegistry registry https://registry.npmjs.org/
+15 silly mapToRegistry data Result {
+15 silly mapToRegistry   raw: 'ethercalc',
+15 silly mapToRegistry   scope: null,
+15 silly mapToRegistry   name: 'ethercalc',
+15 silly mapToRegistry   rawSpec: '',
+15 silly mapToRegistry   spec: 'latest',
+15 silly mapToRegistry   type: 'tag' }
+16 silly mapToRegistry uri https://registry.npmjs.org/ethercalc
+17 verbose addNameTag registry:https://registry.npmjs.org/ethercalc not in flight; fetching
+18 verbose request uri https://registry.npmjs.org/ethercalc
+19 verbose request no auth needed
+20 info attempt registry request try #1 at 9:50:32 PM
+21 verbose request id 8f8a83f6fb23b48c
+22 http request GET https://registry.npmjs.org/ethercalc
+23 info retry will retry, error on last attempt: Error: tunneling socket could not be established, cause=Parse Error
+24 info attempt registry request try #2 at 9:50:43 PM
+25 http request GET https://registry.npmjs.org/ethercalc
+26 info retry will retry, error on last attempt: Error: tunneling socket could not be established, cause=Parse Error
+27 info attempt registry request try #3 at 9:51:43 PM
+28 http request GET https://registry.npmjs.org/ethercalc
+29 verbose stack Error: tunneling socket could not be established, cause=Parse Error
+29 verbose stack     at ClientRequest.onError (/usr/local/lib/node_modules/npm/node_modules/request/node_modules/tunnel-agent/index.js:176:17)
+29 verbose stack     at ClientRequest.g (events.js:260:16)
+29 verbose stack     at emitOne (events.js:77:13)
+29 verbose stack     at ClientRequest.emit (events.js:169:7)
+29 verbose stack     at Socket.socketOnData (_http_client.js:325:9)
+29 verbose stack     at emitOne (events.js:77:13)
+29 verbose stack     at Socket.emit (events.js:169:7)
+29 verbose stack     at readableAddChunk (_stream_readable.js:153:18)
+29 verbose stack     at Socket.Readable.push (_stream_readable.js:111:10)
+29 verbose stack     at TCP.onread (net.js:536:20)
+30 verbose cwd /Users/z0019bs/git-repos/ethercalc
+31 error Darwin 15.3.0
+32 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "i" "-g" "ethercalc"
+33 error node v4.4.7
+34 error npm  v2.15.8
+35 error code ECONNRESET
+36 error network tunneling socket could not be established, cause=Parse Error
+36 error network This is most likely not a problem with npm itself
+36 error network and is related to network connectivity.
+36 error network In most cases you are behind a proxy or have bad network settings.
+36 error network
+36 error network If you are behind a proxy, please make sure that the
+36 error network 'proxy' config is set properly.  See: 'npm help config'
+37 verbose exit [ 1, true ]

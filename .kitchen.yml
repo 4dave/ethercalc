@@ -1,0 +1,57 @@
+---
+driver:
+  name: vagrant
+driver_config:
+  network:
+    - ["forwarded_port", {guest: 80, host: 80}]
+
+driver:
+  name: openstack
+  openstack_username: <%= ENV['OS_USERNAME'] %>
+  openstack_api_key: <%= ENV['OS_PASSWORD'] %>
+  openstack_auth_url: <%= ENV['OS_AUTH_URL'] %>/tokens
+  openstack_tenant: <%= ENV['OS_TENANT_NAME'] %>
+  floating_ip_pool: <%= ENV['FLOATING_IP_POOL'] %>
+  network_ref: /<%= ENV['NETWORK_REF'] %>/
+  key_name: <%= ENV['KEY_NAME'] %>
+  private_key_path: <%= ENV['SSH_KEY_FILE'] %>
+  require_chef_omnibus: '12.5.1'
+  log_level: info
+
+transport:
+  username: cloud-user
+  ssh_key: <%= ENV['SSH_KEY_FILE'] %>
+
+provisioner:
+  name: chef_zero
+  chef_omnibus_url: http://www.getchef.com/chef/install.sh
+  require_chef_omnibus: '12.5.1'
+  environments_path: test/fixtures/environments
+
+platforms:
+  - name: centos7-vagrant
+    driver:
+      name: vagrant
+      box: target/centos7
+      box_check_update: true
+      box_url: 'https://binrepo.target.com/artifactory/marketing/boxes/centos7.json'
+      vagrantfiles:
+      - vagrant.rb
+
+  - name: centos7-openstack
+    transport:
+      username: cloud-user
+      ssh_key: <%= ENV['SSH_KEY_FILE'] %>
+    driver:
+      name: openstack
+      flavor_ref: xsmem-1vcpu
+      image_ref: target-centos-7-latest
+      private_key_path: <%= ENV['SSH_KEY_FILE'] %>
+
+suites:
+  - name: default
+    run_list:
+      - recipe[tpm::gem_package]
+      - recipe[certs_tgt::chef]
+      - recipe[lvm]
+    attributes:
